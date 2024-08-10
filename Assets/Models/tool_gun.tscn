@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckanyo2jh62am"]
+
+[ext_resource type="PackedScene" uid="uid://xstbuij6ffmh" path="res://Assets/Meshes/Tool.glb" id="1_ebcy3"]
+[ext_resource type="Material" uid="uid://cvtvdoknbav11" path="res://Assets/Materials/m_tool.tres" id="2_dlsmg"]
+
+[node name="Tool_gun" instance=ExtResource("1_ebcy3")]
+
+[node name="Tool" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_dlsmg")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tool" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23266e-08, 0.103839, -0.0378301)
+light_color = Color(0.773097, 0.849067, 0.8006, 1)
+light_energy = 2.0
+spot_attenuation = 1.27456
+spot_angle_attenuation = 0.435275

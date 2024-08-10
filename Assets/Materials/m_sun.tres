@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://uv1epc22j3b3"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/shader_sun.gdshader" id="1_6s4c1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o4apk"]
+frequency = 0.017
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_idmvu"]
+noise = SubResource("FastNoiseLite_o4apk")
+
+[sub_resource type="Gradient" id="Gradient_l77fi"]
+offsets = PackedFloat32Array(0.10219, 0.788321)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_swecv"]
+noise_type = 3
+frequency = 0.2027
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v1w7r"]
+color_ramp = SubResource("Gradient_l77fi")
+noise = SubResource("FastNoiseLite_swecv")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6s4c1")
+shader_parameter/Glow_Power = 3.0
+shader_parameter/Lightness_Difference = 6.879
+shader_parameter/Sun_Color = Color(0.814816, 0.383334, 0.0921913, 1)
+shader_parameter/waveSpeed = 0.1
+shader_parameter/fresnel = 1.582
+shader_parameter/scale = 2.0
+shader_parameter/blendSharpness = 0.412
+shader_parameter/voronoi_noise = SubResource("NoiseTexture2D_v1w7r")
+shader_parameter/emission_noise = SubResource("NoiseTexture2D_idmvu")

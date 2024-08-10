@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dh4w3d8qkfy6l"]
+
+[ext_resource type="Texture2D" uid="uid://ba4pqi33842x1" path="res://Assets/Textures/Virus/Virus_BaseColor_.png" id="1_bn0ng"]
+[ext_resource type="Texture2D" uid="uid://gp6mxron5nig" path="res://Assets/Textures/Virus/Virus_Emissive_.png" id="2_8347d"]
+[ext_resource type="Texture2D" uid="uid://cwnoeq7digyct" path="res://Assets/Textures/Virus/Virus_Metallic_.png" id="3_up371"]
+[ext_resource type="Texture2D" uid="uid://dtqwebjpyi3tj" path="res://Assets/Textures/Virus/Virus_Normal_OpenGL_.png" id="4_tehul"]
+[ext_resource type="Texture2D" uid="uid://dewp60n10ixfy" path="res://Assets/Textures/Virus/Virus_Roughness_.png" id="5_0wv5c"]
+
+[resource]
+albedo_texture = ExtResource("1_bn0ng")
+metallic = 1.0
+metallic_texture = ExtResource("3_up371")
+roughness_texture = ExtResource("5_0wv5c")
+emission_enabled = true
+emission_texture = ExtResource("2_8347d")
+normal_enabled = true
+normal_texture = ExtResource("4_tehul")
