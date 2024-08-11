@@ -12,13 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://t2noydvhkpy3" path="res://Assets/Models/metal_scrap_scene.tscn" id="7_3h6ay"]
 [ext_resource type="PackedScene" uid="uid://c542otbr6fteu" path="res://Assets/Models/dyson_sphere.tscn" id="7_h8e0y"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eaqof"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ekta7"]
 panorama = ExtResource("1_r7v2s")
 
 [sub_resource type="Sky" id="Sky_3ew71"]
-sky_material = SubResource("PanoramaSkyMaterial_eaqof")
+sky_material = SubResource("PanoramaSkyMaterial_ekta7")
 
 [sub_resource type="Environment" id="Environment_h7yci"]
+background_mode = 2
 sky = SubResource("Sky_3ew71")
 tonemap_mode = 2
 glow_enabled = true

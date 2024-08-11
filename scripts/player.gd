@@ -11,7 +11,6 @@ var is_back_menu_on := false
 func _physics_process(delta):
 	#movement in space
 	if not is_on_floor():
-		oxygen_progress_bar.value -= 5 * delta
 		if Input.is_action_pressed("forward"):
 			velocity += transform.basis.z * speed * delta
 		elif Input.is_action_pressed("backward"):
@@ -25,9 +24,11 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("down"):
 			velocity -= transform.basis.y * speed * delta
 			
+		if not is_back_menu_on :
+			oxygen_progress_bar.value -= 1 * delta
+			
 	#movement on ship
 	else:
-		oxygen_progress_bar.value += 5 * delta
 		if Input.is_action_pressed("forward"):
 			velocity += transform.basis.z * speed * delta
 		elif Input.is_action_pressed("backward"):
@@ -36,10 +37,13 @@ func _physics_process(delta):
 			velocity -= transform.basis.x * speed * delta
 		elif Input.is_action_pressed("left"):
 			velocity += transform.basis.x * speed * delta
-		elif Input.is_action_pressed("jump"):
+		elif Input.is_action_pressed("up"):
 			velocity += transform.basis.y * speed * delta
 		else:
 			velocity = Vector3.ZERO
+			
+		if not is_back_menu_on :
+			oxygen_progress_bar.value += 5 * delta
 	
 	if not is_back_menu_on:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
