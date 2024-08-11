@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://ceeg5pf86eyci"]
+
+[ext_resource type="Texture2D" uid="uid://cxxhl6utmynfy" path="res://Assets/alien_planet.hdr" id="1_r7v2s"]
+[ext_resource type="PackedScene" uid="uid://cxmemninad44i" path="res://Assets/Models/spaceship.tscn" id="2_0bloa"]
+[ext_resource type="PackedScene" uid="uid://ckanyo2jh62am" path="res://Assets/Models/tool_gun.tscn" id="2_m6nql"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_shcbr"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eaqof"]
+panorama = ExtResource("1_r7v2s")
+
+[sub_resource type="Sky" id="Sky_3ew71"]
+sky_material = SubResource("PanoramaSkyMaterial_eaqof")
+
+[sub_resource type="Environment" id="Environment_h7yci"]
+background_mode = 2
+sky = SubResource("Sky_3ew71")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r87a8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fpdh0"]
+size = Vector3(0.8, 1, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7cqks"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h7yci")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.934838, 0.307503, -0.177537, 1.91566e-08, 0.5, 0.866025, 0.355074, -0.809594, 0.467419, 0, 14.7596, 0)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 2, 18)
+script = ExtResource("2_shcbr")
+cam = NodePath("Camera3D")
+metadata/_edit_group_ = true
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
+
+[node name="Tool_gun" parent="Player/Camera3D" instance=ExtResource("2_m6nql")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.915001, -0.329, -0.822001)
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00314176, 0.0062778, -0.00222039)
+mesh = SubResource("CapsuleMesh_r87a8")
+
+[node name="BagPackMesh" type="MeshInstance3D" parent="Player/BodyMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_fpdh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_7cqks")
+
+[node name="Spaceship" parent="." instance=ExtResource("2_0bloa")]
