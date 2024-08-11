@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://t2noydvhkpy3"]
+
+[ext_resource type="PackedScene" uid="uid://c43sp52ro6p81" path="res://Assets/Meshes/Metal_scrap.glb" id="1_xysph"]
+[ext_resource type="Material" uid="uid://csp1edspss061" path="res://Assets/Materials/m_metal_scrap.tres" id="2_6y4yi"]
+
+[node name="Metal_scrap_scene" instance=ExtResource("1_xysph")]
+
+[node name="Metal_scrap" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6y4yi")

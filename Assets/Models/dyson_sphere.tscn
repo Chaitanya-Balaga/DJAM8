@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c542otbr6fteu"]
+
+[ext_resource type="PackedScene" uid="uid://c58a0wxyjfxj1" path="res://Assets/Meshes/Dyson_sphere.glb" id="1_i86mm"]
+[ext_resource type="Material" uid="uid://cnjaketb5lk7o" path="res://Assets/Materials/m_dyson_sphere.tres" id="2_viyu2"]
+[ext_resource type="Material" uid="uid://uv1epc22j3b3" path="res://Assets/Materials/m_sun.tres" id="3_keklp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qlhrl"]
+
+[node name="Dyson_sphere" instance=ExtResource("1_i86mm")]
+
+[node name="Dyson Sphere" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_viyu2")
+
+[node name="Dyson_ring" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_viyu2")
+
+[node name="Dyson_ring_2" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_viyu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(120, 0, 0, 0, 120, 0, 0, 0, 120, 0, 0, 0)
+material_override = ExtResource("3_keklp")
+mesh = SubResource("SphereMesh_qlhrl")

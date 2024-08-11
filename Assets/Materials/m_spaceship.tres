@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bei8ql6akan3f"]
+
+[ext_resource type="Texture2D" uid="uid://dy0qerfo4fyy5" path="res://Assets/Textures/Ship/Ship_BaseColor_.png" id="1_kdl37"]
+[ext_resource type="Texture2D" uid="uid://cskdknxeqtuxf" path="res://Assets/Textures/Ship/Ship_Metallic_.png" id="2_cx2ej"]
+[ext_resource type="Texture2D" uid="uid://c54pwx3g7mbdb" path="res://Assets/Textures/Ship/Ship_Normal_OpenGL_.png" id="3_8xhb6"]
+[ext_resource type="Texture2D" uid="uid://b0fkxcift8uhy" path="res://Assets/Textures/Ship/Ship_Roughness_.png" id="4_ekda6"]
+
+[resource]
+albedo_texture = ExtResource("1_kdl37")
+metallic = 1.0
+metallic_texture = ExtResource("2_cx2ej")
+roughness_texture = ExtResource("4_ekda6")
+normal_enabled = true
+normal_texture = ExtResource("3_8xhb6")

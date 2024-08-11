@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dowmptfctunm2"]
+
+[ext_resource type="PackedScene" uid="uid://cxbfawme2clly" path="res://Assets/Meshes/Virus.glb" id="1_63gaq"]
+[ext_resource type="Material" uid="uid://dh4w3d8qkfy6l" path="res://Assets/Materials/m_virus.tres" id="2_qy6ih"]
+
+[node name="Virus_scene" instance=ExtResource("1_63gaq")]
+
+[node name="Skeleton3D" parent="Amrature_virus" index="0"]
+bones/1/rotation = Quaternion(-6.78208e-05, -0.0908084, -0.373536, 0.92316)
+bones/2/rotation = Quaternion(0.0522959, -0.0743985, -0.86819, 0.487828)
+bones/3/rotation = Quaternion(-0.249028, 0.153704, -0.356195, 0.887404)
+bones/4/rotation = Quaternion(-0.0567403, -0.372531, 0.75792, -0.532502)
+bones/5/rotation = Quaternion(0.205206, -0.0103886, -0.29608, 0.932802)
+bones/6/rotation = Quaternion(0.120422, 0.185394, 0.886555, -0.406384)
+bones/7/rotation = Quaternion(-0.0517796, -0.1523, 0.446919, 0.879992)
+bones/8/rotation = Quaternion(-0.0664336, -0.15933, 0.75782, 0.629213)
+bones/9/rotation = Quaternion(-0.162052, -0.174897, 0.500513, 0.832248)
+bones/10/rotation = Quaternion(-0.00222911, -0.473524, 0.685834, 0.552631)
+bones/11/rotation = Quaternion(0.287044, 0.193338, 0.345409, 0.872307)
+bones/12/rotation = Quaternion(-0.0155523, 0.46224, 0.736988, 0.49289)
+bones/13/position = Vector3(0.296744, -0.0634656, 0.0919774)
+bones/13/scale = Vector3(1.54547, 1, 1.07736)
+bones/14/position = Vector3(0.266904, -0.0656519, -0.289793)
+bones/15/position = Vector3(0.263372, -0.0663138, 0.123325)
+bones/16/position = Vector3(-0.338797, -0.0634656, -0.18193)
+bones/16/scale = Vector3(1.54547, 1, 1.07736)
+bones/17/position = Vector3(-0.266904, -0.0656519, -0.341779)
+bones/18/position = Vector3(-0.205353, -0.0656519, 0.364766)
+
+[node name="Virus" parent="Amrature_virus/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_qy6ih")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Amrature_virus/Skeleton3D/Virus" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00659189, 0.428897, 0)
+light_color = Color(0.881078, 0.59835, 1.15514e-06, 1)
+light_energy = 10.115
+omni_range = 0.171

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cnjaketb5lk7o"]
+
+[ext_resource type="Texture2D" uid="uid://0fqsfv8qb5a2" path="res://Assets/Textures/Dyson_sphere/Dyson_sphere_BaseColor.png" id="1_n5xlc"]
+[ext_resource type="Texture2D" uid="uid://d1dn4anijkx0f" path="res://Assets/Textures/Dyson_sphere/Dyson_sphere_Metallic.png" id="2_m4bko"]
+[ext_resource type="Texture2D" uid="uid://dta6pm2mwdn70" path="res://Assets/Textures/Dyson_sphere/Dyson_sphere_Normal.png" id="3_dg7jv"]
+[ext_resource type="Texture2D" uid="uid://c0h1trav53wq7" path="res://Assets/Textures/Dyson_sphere/Dyson_sphere_Roughness.png" id="4_iucfl"]
+
+[resource]
+albedo_texture = ExtResource("1_n5xlc")
+metallic = 1.0
+metallic_texture = ExtResource("2_m4bko")
+roughness_texture = ExtResource("4_iucfl")
+normal_enabled = true
+normal_texture = ExtResource("3_dg7jv")
+uv1_scale = Vector3(13.3, 13.3, 13.3)
