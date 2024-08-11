@@ -1,9 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceeg5pf86eyci"]
+[gd_scene load_steps=18 format=3 uid="uid://ceeg5pf86eyci"]
 
 [ext_resource type="Texture2D" uid="uid://cxxhl6utmynfy" path="res://Assets/alien_planet.hdr" id="1_r7v2s"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_uvi4q"]
 [ext_resource type="PackedScene" uid="uid://cxmemninad44i" path="res://Assets/Models/spaceship.tscn" id="2_0bloa"]
 [ext_resource type="PackedScene" uid="uid://ckanyo2jh62am" path="res://Assets/Models/tool_gun.tscn" id="2_m6nql"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_shcbr"]
+[ext_resource type="Script" path="res://scripts/camera_3D.gd" id="3_f4ut3"]
+[ext_resource type="Texture2D" uid="uid://cv6ap4tc142kr" path="res://Assets/Textures/Tool/cursor.png" id="5_0ghgd"]
 [ext_resource type="PackedScene" uid="uid://dowmptfctunm2" path="res://Assets/Models/virus_scene.tscn" id="5_kmkx8"]
 [ext_resource type="Script" path="res://scripts/loot_system.gd" id="6_t1ak8"]
 [ext_resource type="PackedScene" uid="uid://t2noydvhkpy3" path="res://Assets/Models/metal_scrap_scene.tscn" id="7_3h6ay"]
@@ -28,6 +31,7 @@ size = Vector3(0.8, 1, 0.5)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7cqks"]
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_uvi4q")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h7yci")
@@ -38,13 +42,16 @@ shadow_enabled = true
 sky_mode = 1
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("cam")]
-transform = Transform3D(-0.781608, 0, 0.62377, 0, 1, 0, -0.62377, 0, -0.781608, -23, 9, 11)
+unique_name_in_owner = true
+transform = Transform3D(0.990729, 0, 0.135854, 0, 1, 0, -0.135854, 0, 0.990729, -2, 4.61751, -6.53706)
 script = ExtResource("2_shcbr")
 cam = NodePath("Camera3D")
 metadata/_edit_group_ = true
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
+script = ExtResource("3_f4ut3")
+metadata/_edit_group_ = true
 
 [node name="Tool_gun" parent="Player/Camera3D" instance=ExtResource("2_m6nql")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.915001, -0.329, -0.822001)
@@ -74,3 +81,104 @@ metalscrap_scene = ExtResource("7_3h6ay")
 
 [node name="Dyson_sphere" parent="." instance=ExtResource("7_h8e0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 759)
+
+[node name="BackMenu" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -68.0
+offset_right = 48.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartButton" type="Button" parent="BackMenu/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="BackButton" type="Button" parent="BackMenu/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="BackMenu/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="MainCanvas" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="MainCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0ghgd")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MainCanvas"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 347.0
+offset_bottom = 88.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainCanvas/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainCanvas/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="OxygenLabel" type="Label" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Oxygen"
+
+[node name="Spacer" type="Control" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="OxygenProgressBar" type="ProgressBar" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
+value = 100.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ShipHealthLabel" type="Label" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ship Health"
+
+[node name="Spacer" type="Control" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ShipHealthProgressBar" type="ProgressBar" parent="MainCanvas/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
+value = 100.0
+
+[connection signal="pressed" from="BackMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="BackMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
