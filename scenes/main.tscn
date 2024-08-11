@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ceeg5pf86eyci"]
+[gd_scene load_steps=15 format=3 uid="uid://ceeg5pf86eyci"]
 
 [ext_resource type="Texture2D" uid="uid://cxxhl6utmynfy" path="res://Assets/alien_planet.hdr" id="1_r7v2s"]
 [ext_resource type="PackedScene" uid="uid://cxmemninad44i" path="res://Assets/Models/spaceship.tscn" id="2_0bloa"]
 [ext_resource type="PackedScene" uid="uid://ckanyo2jh62am" path="res://Assets/Models/tool_gun.tscn" id="2_m6nql"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_shcbr"]
+[ext_resource type="PackedScene" uid="uid://dowmptfctunm2" path="res://Assets/Models/virus_scene.tscn" id="5_kmkx8"]
+[ext_resource type="Script" path="res://scripts/loot_system.gd" id="6_t1ak8"]
+[ext_resource type="PackedScene" uid="uid://t2noydvhkpy3" path="res://Assets/Models/metal_scrap_scene.tscn" id="7_3h6ay"]
+[ext_resource type="PackedScene" uid="uid://c542otbr6fteu" path="res://Assets/Models/dyson_sphere.tscn" id="7_h8e0y"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eaqof"]
 panorama = ExtResource("1_r7v2s")
@@ -12,7 +16,6 @@ panorama = ExtResource("1_r7v2s")
 sky_material = SubResource("PanoramaSkyMaterial_eaqof")
 
 [sub_resource type="Environment" id="Environment_h7yci"]
-background_mode = 2
 sky = SubResource("Sky_3ew71")
 tonemap_mode = 2
 glow_enabled = true
@@ -35,7 +38,7 @@ shadow_enabled = true
 sky_mode = 1
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("cam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 2, 18)
+transform = Transform3D(-0.781608, 0, 0.62377, 0, 1, 0, -0.62377, 0, -0.781608, -23, 9, 11)
 script = ExtResource("2_shcbr")
 cam = NodePath("Camera3D")
 metadata/_edit_group_ = true
@@ -52,9 +55,22 @@ mesh = SubResource("CapsuleMesh_r87a8")
 
 [node name="BagPackMesh" type="MeshInstance3D" parent="Player/BodyMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
 mesh = SubResource("BoxMesh_fpdh0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_7cqks")
 
 [node name="Spaceship" parent="." instance=ExtResource("2_0bloa")]
+
+[node name="Virus_scene" parent="." instance=ExtResource("5_kmkx8")]
+transform = Transform3D(0.975646, 0.219352, 0, -0.219352, 0.975646, 0, 0, 0, 1, 5.40636, 1.47056, 10.6014)
+visible = false
+
+[node name="LootSystem" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+script = ExtResource("6_t1ak8")
+metalscrap_scene = ExtResource("7_3h6ay")
+
+[node name="Dyson_sphere" parent="." instance=ExtResource("7_h8e0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 759)

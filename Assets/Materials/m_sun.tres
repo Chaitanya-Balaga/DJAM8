@@ -22,7 +22,7 @@ noise = SubResource("FastNoiseLite_swecv")
 [resource]
 render_priority = 0
 shader = ExtResource("1_6s4c1")
-shader_parameter/Glow_Power = 3.0
+shader_parameter/Glow_Power = 10.0
 shader_parameter/Lightness_Difference = 6.879
 shader_parameter/Sun_Color = Color(0.814816, 0.383334, 0.0921913, 1)
 shader_parameter/waveSpeed = 0.1

@@ -7,3 +7,8 @@
 
 [node name="Metal_scrap" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_6y4yi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+light_energy = 10.0
+light_volumetric_fog_energy = 5.671
+light_size = 0.1
